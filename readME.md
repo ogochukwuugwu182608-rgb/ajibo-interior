@@ -1,0 +1,1 @@
+C:\xampp\htdocs\ajibo interiro>php -S localhost:8000       

@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajibo Interiors Worldwide - Premium Interior Design</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-papF+1tGvW1z7fYB2D7wFTLZHDA6v6c5iV8Wz5pR6lsWb3zO/4E2vR+S7B+8dOxX6aJX3+/x9bsz4zp12vY1Bw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/img/logo.jpg" alt="">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="portfolio">Our Works</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="http://localhost:8000/dashboard/" class="nav-link" >Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div class="page-section active" id="home-page">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-pattern"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Luxury Meets <span class="gradient-text">Design</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Transform your space into a masterpiece with our award-winning interior design services that blend
+                    timeless elegance with modern innovation
+                </p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary" data-page="contact">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#" class="btn btn-secondary" data-page="portfolio">
+                        <i class="fas fa-images"></i>
+                        View Our Work
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Design Awards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED SERVICES -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">What We Do</p>
+                    <h2 class="section-title">Premium Services</h2>
+                    <p class="section-description">
+                        Comprehensive interior design solutions tailored to your unique vision and lifestyle
+                    </p>
+                </div>
+                <div class="services-grid">
+                    <!-- Services Section -->
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-roller"></i>
+                        </div>
+                        <h3 class="service-title">Space Beautification & Interior Decoration</h3>
+                        <p class="service-description">
+                            Transform your interiors into aesthetically pleasing spaces with our expert decoration and
+                            beautification services.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-brush"></i>
+                        </div>
+                        <h3 class="service-title">Skimming & Wall Preparation</h3>
+                        <p class="service-description">
+                            Prepare your walls for a flawless finish with our professional skimming and treatment
+                            solutions.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="service-title">Space Planning & Concept Development</h3>
+                        <p class="service-description">
+                            Optimize layouts and design concepts to create functional, stylish, and efficient spaces.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="service-title">Material Supply & Consultation</h3>
+                        <p class="service-description">
+                            Source high-quality materials and get professional guidance to ensure every project exceeds
+                            expectations.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="service-title">Painting & Decorative Finishes</h3>
+                        <p class="service-description">
+                            Add color and texture to your spaces with expert painting and decorative finishing services.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3 class="service-title">Furnishing & Renovation Contracts</h3>
+                        <p class="service-description">
+                            Complete furnishing solutions and renovation services tailored to your style and budget.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                        <h3 class="service-title">Material Supply & Site Management</h3>
+                        <p class="service-description">
+                            Efficient management of materials and site operations to ensure timely project completion.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION ON HOME -->
+        <section class="section">
+            <div class="container">
+                <div class="about-content">
+
+                    <div class="about-text slide-in-right">
+                        <p class="section-subtitle">About Us</p>
+                        <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem;">Creating Timeless Spaces</h2>
+                        <p>
+                            Ajibo Interiors Worldwide is a trusted name in the world of space transformation and
+                            interior excellence. Founded over five years ago, we have grown into a leading brand driven
+                            by passion, creativity, and professionalism.
+
+                        </p>
+                        <p>
+                            We specialize in complete space beautification services, offering a seamless experience from
+                            concept to completion. Our team of skilled experts is professionally trained to handle every
+                            stage of interior projects; from skimming, space planning, and material supply to painting,
+                            decorative finishes, furnishings, and full renovation contracts.
+
+                        </p>
+                        <ul class="features-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Award-winning design team
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                5+ years of industry experience
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Personalized design solutions
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                End-to-end project management
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" data-page="about">
+                            <i class="fas fa-arrow-right"></i>
+                            Learn More About Us
+                        </a>
+                    </div>
+                    <div class="about-image slide-in-left">
+                        <div class="skeleton skeleton-image">
+                            <img src="img/about-img.jpg" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO PREVIEW ON HOME -->
+        <section class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">Our Works</p>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        Explore our collection of stunning projects that showcase our design excellence
+                    </p>
+                </div>
+                <div class="portfolio-grid" style="margin-bottom: 3rem;">
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 400px;">
+                            <img src="img/work7.jpg" alt="our_works">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Modern Penthouse</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="luxury">
+                        <div class="skeleton skeleton-image" style="height: 300px;">
+                            <img src="img/work4.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Coastal Villa</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Luxury Home
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 500px;">
+                            <img src="img/work8.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Executive Office</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Commercial
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 350px;">
+                            <img src="img/work12.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Urban Loft</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="luxury">
+                        <div class="skeleton skeleton-image" style="height: 420px;">
+                            <img src="img/work10.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Contemporary Home</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 360px;">
+                            <img src="img/work2.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Art Gallery</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Commercial
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="#" class="btn btn-primary" data-page="portfolio">
+                        <i class="fas fa-images"></i>
+                        View All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS/REVIEWS SECTION -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">Testimonials</p>
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <p class="section-description">
+                        Don't just take our word for it - hear from our satisfied clients
+                    </p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card glass-card fade-in">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            Ajibo interiors is not just a name, it's a household name. I called and Ajibo interiors
+                            answered.The job was so neat and attractive. Working with you was fun and less stressful.
+                            You will be at my country home cum January for the painting and interior design. Your work
+                            make sense nwanyioma
+
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <!-- <i class="fas fa-user"></i> -->
+                                <img src="img/oris.jpg" alt="">
+                            </div>
+                            <div class="author-info">
+                                <h4 class="author-name">Oris Ideas & Solution</h4>
+                                <p class="author-title">CEO</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card fade-in">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "
+                            Working with Ajibochukwu Interiors Worldwide has been an exceptional experience from start
+                            to finish. Their professionalism, attention to detail, and passion for excellence clearly
+                            set them apart in the interior finishing and painting industry."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="img/paintrite.jpg" alt="">
+                            </div>
+                            <div class="author-info">
+                                <h4 class="author-name">Paintrite Concept</h4>
+                                <p class="author-title">CEO</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card fade-in">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Good Morning Ajibo. I’m just getting to the site now and i saw what you and your team did.
+                            I’m so happy. It’s rare to find reliable workers here in Nigeria. Thanks so much for a job
+                            well done
+
+                            "
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="img/puten.jpg" alt="">
+                            </div>
+                            <div class="author-info">
+                                <h4 class="author-name">Priten Art and Deco</h4>
+                                <p class="author-title">CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter-section">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Stay Inspired</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Subscribe to our newsletter for design tips, trends, and exclusive project showcases
+                </p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <div class="page-section" id="about-page">
+        <section class="hero" style="min-height: 50vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="section-subtitle">About Us</p>
+                <h1 class="hero-title">Creating Timeless <span class="gradient-text">Spaces</span></h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text slide-in-right">
+                        <p class="section-subtitle">About Us</p>
+                        <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem;">Creating Timeless Spaces</h2>
+                        <p>
+                            Ajibo Interiors Worldwide is a trusted name in the world of space transformation and
+                            interior excellence. Founded over five years ago, we have grown into a leading brand driven
+                            by passion, creativity, and professionalism.
+
+                        </p>
+                        <p>
+                            We specialize in complete space beautification services, offering a seamless experience from
+                            concept to completion. Our team of skilled experts is professionally trained to handle every
+                            stage of interior projects; from skimming, space planning, and material supply to painting,
+                            decorative finishes, furnishings, and full renovation contracts.
+
+                        </p>
+                        <ul class="features-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Award-winning design team
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                5+ years of industry experience
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Personalized design solutions
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                End-to-end project management
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" data-page="about">
+                            <i class="fas fa-arrow-right"></i>
+                            Learn More About Us
+                        </a>
+                    </div>
+                    <div class="about-image slide-in-left">
+                        <div class="skeleton skeleton-image">
+                            <img src="img/about-img.jpg" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM SECTION -->
+        <!-- <section class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">Our Team</p>
+                    <h2 class="section-title">Meet The Experts</h2>
+                    <p class="section-description">
+                        Talented designers passionate about creating exceptional spaces
+                    </p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member glass-card fade-in">
+                        <div class="team-photo">
+                            <div class="skeleton skeleton-image" style="border-radius: 50%; height: 100%;"></div>
+                        </div>
+                        <h3 class="team-name">Sarah Mitchell</h3>
+                        <p class="team-role">Lead Designer</p>
+                        <div class="team-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member glass-card fade-in">
+                        <div class="team-photo">
+                            <div class="skeleton skeleton-image" style="border-radius: 50%; height: 100%;"></div>
+                        </div>
+                        <h3 class="team-name">James Anderson</h3>
+                        <p class="team-role">Senior Architect</p>
+                        <div class="team-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member glass-card fade-in">
+                        <div class="team-photo">
+                            <div class="skeleton skeleton-image" style="border-radius: 50%; height: 100%;"></div>
+                        </div>
+                        <h3 class="team-name">Emily Chen</h3>
+                        <p class="team-role">Project Manager</p>
+                        <div class="team-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member glass-card fade-in">
+                        <div class="team-photo">
+                            <div class="skeleton skeleton-image" style="border-radius: 50%; height: 100%;"></div>
+                        </div>
+                        <h3 class="team-name">Michael Roberts</h3>
+                        <p class="team-role">Design Consultant</p>
+                        <div class="team-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+        <section class="section team-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle" style="background-color: black; border-radius: 20px; padding: 5px;">Our
+                        Team</p>
+                    <h2 class="section-title">Meet The Experts</h2>
+                    <p class="section-description">
+                        Talented designers passionate about creating exceptional spaces. we believe every space tells a
+                        story.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==================== SERVICES PAGE ==================== -->
+    <div class="page-section" id="services-page">
+        <section class="hero" style="min-height: 50vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="section-subtitle">Services</p>
+                <h1 class="hero-title">What We <span class="gradient-text">Offer</span></h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-roller"></i>
+                        </div>
+                        <h3 class="service-title">Space Beautification & Interior Decoration</h3>
+                        <p class="service-description">
+                            Transform your interiors into aesthetically pleasing spaces with our expert decoration and
+                            beautification services.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-brush"></i>
+                        </div>
+                        <h3 class="service-title">Skimming & Wall Preparation</h3>
+                        <p class="service-description">
+                            Prepare your walls for a flawless finish with our professional skimming and treatment
+                            solutions.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="service-title">Space Planning & Concept Development</h3>
+                        <p class="service-description">
+                            Optimize layouts and design concepts to create functional, stylish, and efficient spaces.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="service-title">Material Supply & Consultation</h3>
+                        <p class="service-description">
+                            Source high-quality materials and get professional guidance to ensure every project exceeds
+                            expectations.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="service-title">Painting & Decorative Finishes</h3>
+                        <p class="service-description">
+                            Add color and texture to your spaces with expert painting and decorative finishing services.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3 class="service-title">Furnishing & Renovation Contracts</h3>
+                        <p class="service-description">
+                            Complete furnishing solutions and renovation services tailored to your style and budget.
+                        </p>
+                    </div>
+
+                    <div class="glass-card service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                        <h3 class="service-title">Material Supply & Site Management</h3>
+                        <p class="service-description">
+                            Efficient management of materials and site operations to ensure timely project completion.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PORTFOLIO PAGE ==================== -->
+    <div class="page-section" id="portfolio-page">
+        <section class="hero" style="min-height: 50vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="section-subtitle">Portfolio</p>
+                <h1 class="hero-title">Our Recent <span class="gradient-text">Works</span></h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="portfolio-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="residential">Residential</button>
+                    <button class="filter-btn" data-filter="commercial">Commercial</button>
+                    <button class="filter-btn" data-filter="luxury">Luxury</button>
+                </div>
+
+                <!-- <div class="portfolio-grid">
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 400px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Modern Penthouse</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="luxury">
+                        <div class="skeleton skeleton-image" style="height: 300px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Coastal Villa</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Luxury Home
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 500px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Executive Office</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Commercial
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 350px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Boutique Hotel</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Hospitality
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 450px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Urban Loft</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="luxury">
+                        <div class="skeleton skeleton-image" style="height: 380px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Spa Retreat</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Wellness
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 420px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Contemporary Kitchen</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 360px;"></div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Art Gallery</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Commercial
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 400px;">
+                            <img src="img/work7.jpg" alt="our_works">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Modern Penthouse</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="luxury">
+                        <div class="skeleton skeleton-image" style="height: 300px;">
+                            <img src="img/work4.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Coastal Villa</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Luxury Home
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 500px;">
+                            <img src="img/work8.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Executive Office</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Commercial
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="residential">
+                        <div class="skeleton skeleton-image" style="height: 350px;">
+                            <img src="img/work10.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Urban Loft</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="luxury">
+                        <div class="skeleton skeleton-image" style="height: 420px;">
+                            <img src="img/work12.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Contemporary Home</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Residential
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in" data-category="commercial">
+                        <div class="skeleton skeleton-image" style="height: 360px;">
+                            <img src="img/work2.jpg" alt="">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Art Gallery</h3>
+                            <p class="portfolio-category">
+                                <i class="fas fa-tag"></i>
+                                Commercial
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <div class="page-section" id="contact-page">
+        <section class="hero" style="min-height: 50vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="section-subtitle">Contact</p>
+                <h1 class="hero-title">Let's Start Your <span class="gradient-text">Project</span></h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info slide-in-left">
+                        <h3>Get In Touch</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                            Ready to transform your space? Contact us today and let's discuss your vision.
+                        </p>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>123 Design Avenue<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>hello@Ajibointeriors.com<br>info@Ajibointeriors.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+234 703 164 1315</p>
+
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Hours</h4>
+                                <p>Mon-Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="slide-in-right" id="contactForm">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" class="form-control" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" class="form-control" placeholder="john@example.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="+234 (555) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Project Type *</label>
+                            <select name="service_type" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="space_beautification">Space Beautification & Interior Decoration</option>
+                                <option value="skimming_wall_prep">Skimming & Wall Preparation</option>
+                                <option value="space_planning">Space Planning & Concept Development</option>
+                                <option value="material_consultation">Material Supply & Consultation</option>
+                                <option value="painting_finishes">Painting & Decorative Finishes</option>
+                                <option value="furnishing_renovation">Furnishing & Renovation Contracts</option>
+                                <option value="material_site_management">Material Supply & Site Management</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea name="message" class="form-control" placeholder="Tell us about your project..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== DASHBOARD PAGE ==================== -->
+    <div class="page-section" id="dashboard-page">
+        <section class="hero" style="min-height: 40vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="section-subtitle">Dashboard</p>
+                <h1 class="hero-title">Business <span class="gradient-text">Overview</span></h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="dashboard-grid">
+                    <div class="widget fade-in">
+                        <div class="widget-header">
+                            <span class="widget-title">Active Projects</span>
+                            <div class="widget-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                        </div>
+                        <div class="widget-value">24</div>
+                        <div class="widget-change">
+                            <i class="fas fa-arrow-up"></i>
+                            +3 this month
+                        </div>
+                    </div>
+
+                    <div class="widget fade-in">
+                        <div class="widget-header">
+                            <span class="widget-title">Happy Clients</span>
+                            <div class="widget-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                        </div>
+                        <div class="widget-value">180+</div>
+                        <div class="widget-change">
+                            <i class="fas fa-arrow-up"></i>
+                            +12 this month
+                        </div>
+                    </div>
+
+                    <div class="widget fade-in">
+                        <div class="widget-header">
+                            <span class="widget-title">Revenue</span>
+                            <div class="widget-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                        <div class="widget-value">$2.4M</div>
+                        <div class="widget-change">
+                            <i class="fas fa-arrow-up"></i>
+                            +18% vs last quarter
+                        </div>
+                    </div>
+
+                    <div class="widget fade-in">
+                        <div class="widget-header">
+                            <span class="widget-title">Team Members</span>
+                            <div class="widget-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="widget-value">32</div>
+                        <div class="widget-change">
+                            <i class="fas fa-arrow-up"></i>
+                            +2 new hires
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div class="widget chart-widget fade-in">
+                        <div class="widget-header">
+                            <span class="widget-title">Recent Projects</span>
+                            <div class="widget-icon">
+                                <i class="fas fa-list-alt"></i>
+                            </div>
+                        </div>
+                        <div class="projects-list">
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>Luxury Penthouse - Manhattan</h4>
+                                    <p class="project-progress">Completion: 85%</p>
+                                </div>
+                                <span class="project-status status-progress">In Progress</span>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>Modern Office Space - Brooklyn</h4>
+                                    <p class="project-progress">Completion: 60%</p>
+                                </div>
+                                <span class="project-status status-progress">In Progress</span>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>Boutique Hotel Renovation</h4>
+                                    <p class="project-progress">Completion: 100%</p>
+                                </div>
+                                <span class="project-status status-completed">Completed</span>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>Coastal Villa - Hamptons</h4>
+                                    <p class="project-progress">Completion: 30%</p>
+                                </div>
+                                <span class="project-status status-pending">Planning</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget fade-in">
+                        <div class="widget-header">
+                            <span class="widget-title">Quick Actions</span>
+                            <div class="widget-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                            <button class="btn btn-primary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-plus"></i>
+                                New Project
+                            </button>
+                            <button class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-user-plus"></i>
+                                Add Client
+                            </button>
+                            <button class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-chart-bar"></i>
+                                View Reports
+                            </button>
+                            <button class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-calendar-alt"></i>
+                                Team Calendar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ajibo Interiors Worldwide</h3>
+                <p>
+                    Creating exceptional spaces that inspire and elevate your lifestyle with timeless design excellence.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#" data-page="portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                    <li><a href="#" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Residential Design</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Skimming & Wall Preparation and treatments</a>
+                    </li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Space Beautification & Interior Decoration</a>
+                    </li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Space Planning & Concept Development</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Material Supply & Consultation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <!-- <li><i class="fas fa-map-marker-alt"></i> 123 Design Avenue, NY 10001</li> -->
+                    <li><i class="fas fa-phone"></i> +234 703 164 1315</li>
+                    <li><i class="fas fa-envelope"></i> email@Ajibointeriors.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ajibo Interiors Worldwide. All rights reserved. Designed with <i class="fas fa-heart"
+                    style="color: var(--accent-gold);"></i> <a href="http://" target="_blank"
+                    rel="noopener noreferrer">by Oplueas Web Services</a></p>
+        </div>
+    </footer>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <div class="toast-content">
+            <div class="toast-title">Success</div>
+            <div class="toast-message">Your message has been sent!</div>
+        </div>
+        <button class="toast-close" onclick="hideToast()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- ==================== FAB BUTTON ==================== -->
+    <button class="fab" id="fab" aria-label="Chat with us">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+
+
+
+        {
+            const contactForm = document.getElementById('contactForm');
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // prevent page reload
+
+                const formData = new FormData(contactForm);
+
+                // Convert FormData to JSON
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+                // console.log(data)
+
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/api/quotes/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // Include Authorization header if user is logged in
+                            // 'Authorization': `Bearer ${TokenManager.getAccessToken() || ''}`
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (!response.ok) {
+                        const err = await response.json();
+                        throw new Error(err.error || 'Failed to submit quote');
+                    }
+
+                    const result = await response.json();
+                    console.log('Quote submitted:', result);
+
+                    alert('Quote submitted successfully! Reference: ' + result.quote.reference_number);
+                    contactForm.reset();
+
+                } catch (error) {
+                    console.error('API Error:', error);
+                    alert('Error: ' + error.message);
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+
+        // ==================== GSAP ANIMATIONS ====================
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ==================== THEME TOGGLE ====================
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeIcon(theme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        // ==================== SMART NAVBAR ====================
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Add scrolled class for background
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Hide/show navbar on scroll
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // ==================== MOBILE MENU ====================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // ==================== PAGE NAVIGATION ====================
+        const navLinkElements = document.querySelectorAll('.nav-link, [data-page]');
+        const pageLinks = document.querySelectorAll('a[data-page]');
+        const pages = document.querySelectorAll('.page-section');
+
+        function showPage(pageName) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`${pageName}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageName) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close mobile menu
+            navLinks.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.className = 'fas fa-bars';
+
+            // Reinitialize animations for the new page
+            initScrollAnimations();
+        }
+
+        pageLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                showPage(page);
+            });
+        });
+
+        // ==================== SCROLL ANIMATIONS ====================
+        function initScrollAnimations() {
+            // Fade in animations
+            gsap.utils.toArray('.fade-in').forEach(element => {
+                gsap.fromTo(element,
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Slide in left
+            gsap.utils.toArray('.slide-in-left').forEach(element => {
+                gsap.fromTo(element,
+                    { opacity: 0, x: -50 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Slide in right
+            gsap.utils.toArray('.slide-in-right').forEach(element => {
+                gsap.fromTo(element,
+                    { opacity: 0, x: 50 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Scale in
+            gsap.utils.toArray('.scale-in').forEach(element => {
+                gsap.fromTo(element,
+                    { opacity: 0, scale: 0.9 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+        }
+
+        // Initialize on page load
+        initScrollAnimations();
+
+        // ==================== PARALLAX EFFECT ====================
+        gsap.to('.hero-pattern', {
+            yPercent: 50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // ==================== PORTFOLIO FILTER ====================
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // Filter items
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                        gsap.fromTo(item,
+                            { opacity: 0, scale: 0.8 },
+                            { opacity: 1, scale: 1, duration: 0.4 }
+                        );
+                    } else {
+                        gsap.to(item, {
+                            opacity: 0,
+                            scale: 0.8,
+                            duration: 0.3,
+                            onComplete: () => {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+        // ==================== FORM SUBMISSIONS ====================
+        const contactForm = document.getElementById('contactForm');
+        const newsletterForm = document.getElementById('newsletterForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('success', 'Message Sent!', 'Thank you for contacting us. We\'ll get back to you soon.');
+            contactForm.reset();
+        });
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('success', 'Subscribed!', 'Thank you for subscribing to our newsletter.');
+            newsletterForm.reset();
+        });
+
+        // ==================== TOAST NOTIFICATIONS ====================
+        function showToast(type, title, message) {
+            const toast = document.getElementById('toast');
+            const toastIcon = toast.querySelector('i');
+            const toastTitle = toast.querySelector('.toast-title');
+            const toastMessage = toast.querySelector('.toast-message');
+
+            // Update content
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            // Update type
+            toast.className = `toast ${type}`;
+
+            if (type === 'success') {
+                toastIcon.className = 'fas fa-check-circle';
+            } else if (type === 'error') {
+                toastIcon.className = 'fas fa-exclamation-circle';
+            }
+
+            // Show toast
+            toast.classList.add('show');
+
+            // Hide after 4 seconds
+            setTimeout(() => {
+                hideToast();
+            }, 4000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('show');
+        }
+
+        // ==================== FAB BUTTON ====================
+        const fab = document.getElementById('fab');
+
+        fab.addEventListener('click', () => {
+            showToast('success', 'Chat Coming Soon!', 'Our live chat feature will be available shortly.');
+        });
+
+        // ==================== COUNTER ANIMATION ====================
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Animate stats on scroll
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    const text = entry.target.textContent;
+                    const number = parseInt(text);
+                    animateValue(entry.target, 0, number, 2000);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(stat => observer.observe(stat));
+
+        // ==================== SKELETON LOADER SIMULATION ====================
+        // Simulate image loading after 2 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.skeleton-image').forEach((skeleton, index) => {
+                setTimeout(() => {
+                    skeleton.style.background = `linear-gradient(135deg, 
+                        ${['#c9a961', '#8b7355', '#e8dcc8'][index % 3]} 0%, 
+                        ${['#8b7355', '#e8dcc8', '#c9a961'][index % 3]} 100%)`;
+                }, index * 100);
+            });
+        }, 2000);
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && !this.hasAttribute('data-page')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // ==================== HERO TEXT ANIMATION ====================
+        gsap.from('.hero-title', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 0.3,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-subtitle', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 0.6,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-cta', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 0.9,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-stats', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 1.2,
+            ease: 'power3.out'
+        });
+
+        // ==================== CURSOR EFFECT (OPTIONAL ENHANCEMENT) ====================
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function (e) {
+                gsap.to(this, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            btn.addEventListener('mouseleave', function (e) {
+                gsap.to(this, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // ==================== PERFORMANCE OPTIMIZATION ====================
+        // Lazy load images when they come into view
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        // ==================== CONSOLE WELCOME MESSAGE ====================
+        console.log('%c Welcome to Ajibo Interiors Worldwide! ', 'background: linear-gradient(135deg, #c9a961 0%, #8b7355 100%); color: white; font-size: 20px; padding: 10px; border-radius: 5px;');
+        console.log('%cExplore our premium interior design solutions and transform your space today!', 'color: #c9a961; font-size: 14px;');
+    </script>
+</body>
+
+</html>

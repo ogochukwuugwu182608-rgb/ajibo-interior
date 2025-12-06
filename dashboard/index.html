@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajibo Interiors - Admin Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- ==================== LOGIN PAGE ==================== -->
+    <div class="auth-page" id="loginPage">
+        <div class="auth-container">
+            <div class="auth-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h1>Ajibo Interiors</h1>
+                <p>Admin Dashboard</p>
+            </div>
+
+            <div class="auth-card">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Sign in to manage your interior design business</p>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input type="email" name="email" placeholder="admin@ajibointeriors.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <input type="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="checkbox">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="goToRegister">Create Account</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== REGISTER PAGE ==================== -->
+    <div class="auth-page" id="registerPage" style="display: none;">
+        <div class="auth-container">
+            <div class="auth-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h1>Ajibo Interiors</h1>
+                <p>Admin Dashboard</p>
+            </div>
+
+            <div class="auth-card">
+                <h2>Create Account</h2>
+                <p class="auth-subtitle">Join our admin team</p>
+
+                <form id="registerForm" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-user"></i>
+                                First Name
+                            </label>
+                            <input type="text" name="first_name" placeholder="John" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-user"></i>
+                                Last Name
+                            </label>
+                            <input type="text" name="last_name" placeholder="Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input type="email" name="email" placeholder="admin@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <input type="password" name="password" placeholder="Create a strong password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-lock"></i>
+                            Confirm Password
+                        </label>
+                        <input type="password" name="password2" placeholder="Confirm your password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" id="goToLogin">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DASHBOARD LAYOUT ==================== -->
+    <div class="dashboard-layout" id="dashboardLayout" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Ajibo Interiors</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="invoices">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Invoices</span>
+                    <span class="badge" id="invoiceCount">0</span>
+                </a>
+                <a href="#" class="nav-item" data-page="receipts">
+                    <i class="fas fa-receipt"></i>
+                    <span>Receipts</span>
+                </a>
+                <!-- <a href="#" class="nav-item" data-page="projects">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </a> -->
+                <a href="#" class="nav-item" data-page="contacts">
+                    <i class="fas fa-address-book"></i>
+                    <span>Contacts</span>
+                    <span class="badge badge-danger" id="contactCount">0</span>
+                </a>
+                <!-- <a href="#" class="nav-item" data-page="newsletter">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Newsletter</span>
+                </a> -->
+                <!-- <a href="#" class="nav-item" data-page="services">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Services</span>
+                </a> -->
+                <!-- <a href="#" class="nav-item" data-page="testimonials">
+                    <i class="fas fa-star"></i>
+                    <span>Testimonials</span>
+                </a> -->
+                <!-- <a href="#" class="nav-item" data-page="profile">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Profile</span>
+                </a> -->
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <!-- <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div> -->
+
+                    <div class="user-menu">
+                        <button class="user-menu-btn" id="userMenuBtn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" id="userName">Admin</span>
+                                <span class="user-role">Administrator</span>
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content" id="pageContent">
+                <!-- Content will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Create Invoice Modal -->
+    <!-- Replace the invoiceModal content -->
+    <div class="modal" id="invoiceModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-file-invoice"></i> Create Invoice</h3>
+                    <button class="modal-close" onclick="closeModal('invoiceModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Content will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal" id="receiptModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="receiptModalTitle"><i class="fas fa-receipt"></i> Receipt</h3>
+                    <button class="modal-close" onclick="closeModal('receiptModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Leave THIS empty -->
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="viewReceiptModal" class="modal vrmodal">
+        <div class="modal-content vrmodal-content">
+            <span class="close" onclick="closeModal('viewReceiptModal')">&times;</span>
+           <button class="btn" id="receiptdownload">download</button>
+            <div class="modal-body" id="viewReceiptBody">
+                <!-- Details will be filled dynamically -->
+            </div>
+        </div>
+    </div>
+
+
+    <div id="viewInvoiceModal" class="modal vrmodal">
+        <div class="modal-content vrmodal-content vimodal-content">
+            <span class="close" onclick="closeModal('viewInvoiceModal')">&times;</span>
+            <button id="invoicedownload">download</button>
+
+            <div class="modal-body" id="viewInvoiceBody">
+                <!-- Invoice details will be filled dynamically -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">Success</div>
+            <div class="toast-message">Action completed successfully</div>
+        </div>
+        <button class="toast-close" onclick="hideToast()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+
+</html>
