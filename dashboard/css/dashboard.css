@@ -1,8 +1,8 @@
 /* ==================== CSS VARIABLES ==================== */
 :root {
     /* Brand Colors */
-    --accent-gold: #c9a961;
-    --accent-dark: #8b7355;
+    --accent-gold: #0058AFff;
+    --accent-dark: rgb(131, 172, 223);
     --accent-light: #e8dcc8;
     
     /* Light Theme */
@@ -17,13 +17,16 @@
     /* Semantic Colors */
     --success: #4caf50;
     --warning: #ff9800;
-    --danger: #f44336;
+    --danger: #AD0015ff;
     --info: #2196f3;
     
     /* Shadows */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+    
+    
+
     
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
