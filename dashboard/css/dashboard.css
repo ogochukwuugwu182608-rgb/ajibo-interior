@@ -1,7 +1,7 @@
 /* ==================== CSS VARIABLES ==================== */
 :root {
     /* Brand Colors */
-    --accent-gold: #0058AFff;
+   --accent-gold: #0058AFff;
     --accent-dark: rgb(131, 172, 223);
     --accent-light: #e8dcc8;
     
@@ -19,6 +19,7 @@
     --warning: #ff9800;
     --danger: #AD0015ff;
     --info: #2196f3;
+    
     
     /* Shadows */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
