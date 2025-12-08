@@ -1,7 +1,32 @@
 /* ==================== CSS VARIABLES & THEME ==================== */
 :root {
     /* Light Theme Colors */
-    --gradient-light: linear-gradient(135deg, rgba(77,124,255,0.08) 0%, rgba(192,64,64,0.05) 100%), url('img/hero-img.jpg');
+      --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-accent: #f5f5f5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-light: #999999;
+
+    /* Brand Colors */
+    --accent-gold: rgb(175, 0, 38);
+    --accent-dark: #a4d6f7;
+    --accent-light: #e8dcc8;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, rgb(0, 88, 175) 0%, rgb(164, 214, 247) 100%);
+    --gradient-light:linear-gradient(135deg, rgba(0, 88, 175, 0.4) 0%, rgba(164, 214, 247, 0.4) 100%), url('img/hero-img.jpg');
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
 
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
