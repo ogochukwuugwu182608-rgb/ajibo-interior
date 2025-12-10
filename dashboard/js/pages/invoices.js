@@ -13,11 +13,11 @@ export async function loadInvoicesPage() {
         
         console.log(currentInvoices)
 
-                         const client_name =  invoice.client_name ? invoice.client_name : invoice.manual_client_name;
-                                    const client_email =  invoice.client_email ? invoice.client_email : invoice.manual_client_email;
-                                    const client_phone  =  invoice.client_phone ? invoice.client_phone : invoice.manual_client_phone;
-                                    const quote_service =  invoice.quote_service ? invoice.quote_service : invoice.manual_service_name;
-                                    const quote_reference  =  invoice.quote_reference ? invoice.quote_reference : N/A;
+                         // const client_name =  invoice.client_name ? invoice.client_name : invoice.manual_client_name;
+                         //            const client_email =  invoice.client_email ? invoice.client_email : invoice.manual_client_email;
+                         //            const client_phone  =  invoice.client_phone ? invoice.client_phone : invoice.manual_client_phone;
+                         //            const quote_service =  invoice.quote_service ? invoice.quote_service : invoice.manual_service_name;
+                         //            const quote_reference  =  invoice.quote_reference ? invoice.quote_reference : N/A;
 
         
         pageContent.innerHTML = `
@@ -60,7 +60,7 @@ export async function loadInvoicesPage() {
                                             <div>
                                                 <strong>${ invoice.client_name ? invoice.client_name : invoice.manual_client_name;}</strong>
                                                 <br>
-                                                <small style="color: var(--text-secondary)">${invoice.client_email}</small>
+                                                <small style="color: var(--text-secondary)">${ invoice.client_email ? invoice.client_email : invoice.manual_client_email}</small>
                                             </div>
                                         </td>
                                         <td>${invoice.quote_service || 'N/A'}</td>
