@@ -162,11 +162,11 @@ async function createNewInvoice() {
                 <div class="form-row" >
                     <div class="form-group">
                         <label>Client Email Address (optional)</label>
-                        <input type="email" name="manual_client_email" required>
+                        <input type="email" name="manual_client_email" >
                     </div>
                     <div class="form-group">
                         <label>Client Phone</label>
-                        <input type="number" name="manual_client_phone" value="0" step="0.01" min="0" max="100" required>
+                        <input type="number" name="manual_client_phone"  >
                     </div>
                 </div>
                 </div>
