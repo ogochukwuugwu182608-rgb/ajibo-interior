@@ -10,7 +10,7 @@ export async function loadInvoicesPage() {
     try {
         const data = await InvoicesAPI.getAll();
         currentInvoices = data.results || [];
-
+        console.log(currentInvoices)
         pageContent.innerHTML = `
             <div class="card">
                 <div class="card-header">
