@@ -152,7 +152,7 @@ async function createNewInvoice() {
                     </div>
                     <div class="form-group"> 
                     <label>Service Name</label>
-                        <input type="text" class="form-control" name="manualServiceName" placeholder="Enter service name...">
+                        <input type="text" class="form-control" name="manaul_service_name" placeholder="Enter service name...">
                     </div>
                 
                 </div>
@@ -162,11 +162,11 @@ async function createNewInvoice() {
                 <div class="form-row" >
                     <div class="form-group">
                         <label>Client Email Address (optional)</label>
-                        <input type="email" name="manual_client_email" >
+                        <input type="email" name="manual_client_email" placeholder="Enter client email...">
                     </div>
                     <div class="form-group">
                         <label>Client Phone</label>
-                        <input type="number" name="manual_client_phone"  >
+                        <input type="number" name="manual_client_phone" placeholder="Enter client phone...">
                     </div>
                 </div>
                 </div>
