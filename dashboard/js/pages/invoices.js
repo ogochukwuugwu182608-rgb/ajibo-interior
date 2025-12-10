@@ -10,7 +10,11 @@ export async function loadInvoicesPage() {
     try {
         const data = await InvoicesAPI.getAll();
         currentInvoices = data.results || [];
+        
         console.log(currentInvoices)
+
+
+        
         pageContent.innerHTML = `
             <div class="card">
                 <div class="card-header">
@@ -40,6 +44,15 @@ export async function loadInvoicesPage() {
                             </thead>
                             <tbody>
                                 ${currentInvoices.map(invoice => `
+
+
+                                    const client_name =  invoice.client_name ? invoice.client_name : invoice.manual_client_name;
+                                    const client_email =  invoice.client_email ? invoice.client_email : invoice.manual_client_email;
+                                    const client_phone  =  invoice.client_phone ? invoice.client_phone : invoice.manual_client_phone;
+                                    const quote_service =  invoice.quote_service ? invoice.quote_service : invoice.manual_service_name;
+                                    const quote_reference  =  invoice.quote_reference ? invoice.quote_reference : N/A;
+
+                                        console.log(client_name);
                                     <tr>
                                         <td><strong>${invoice.invoice_number}</strong></td>
                                         <td><span class="badge">${invoice.quote_reference}</span></td>
