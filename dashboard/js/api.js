@@ -240,6 +240,7 @@ export const InvoicesAPI = {
     },
 
     async create(invoiceData) {
+        console.log(invoiceData)
         return await api.post('/invoices/', invoiceData);
     },
 
