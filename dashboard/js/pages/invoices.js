@@ -8,68 +8,62 @@ let currentLineItems = [];
 
 export async function loadInvoicesPage() {
     try {
-        const data = await InvoicesAPI.getAll();
-        currentInvoices = data.results || [];
-        
-        console.log(currentInvoices)
+    const data = await InvoicesAPI.getAll();
+    currentInvoices = data.results || [];
+    
+    console.log(currentInvoices);
+    
+    pageContent.innerHTML = `
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-file-invoice"></i>
+                    All Invoices
+                </h3>
+                <button class="btn btn-primary" onclick="window.createNewInvoice()">
+                    <i class="fas fa-plus"></i>
+                    Create Invoice
+                </button>
+            </div>
 
-                        
-        
-        pageContent.innerHTML = `
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-file-invoice"></i>
-                        All Invoices
-                    </h3>
-                    <button class="btn btn-primary" onclick="window.createNewInvoice()">
-                        <i class="fas fa-plus"></i>
-                        Create Invoice
-                    </button>
-                </div>
-
-                ${currentInvoices.length > 0 ? `
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Invoice #</th>
-                                    <th>Quote Ref</th>
-                                    <th>Client</th>
-                                    <th>Service</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${currentInvoices.map(invoice => 
-
-                                     const client_name =  invoice.client_name ? invoice.client_name : invoice.manual_client_name;
-                                    const client_email =  invoice.client_email ? invoice.client_email : invoice.manual_client_email;
-                                    const client_phone  =  invoice.client_phone ? invoice.client_phone : invoice.manual_client_phone;
-                                    const quote_service =  invoice.quote_service ? invoice.quote_service : invoice.manual_service_name;
-                                    const quote_reference  =  invoice.quote_reference ? invoice.quote_reference : N/A;
-
-                                   
-                                        console.log(client_name);
-                                                      
-                                        return `
+            ${currentInvoices.length > 0 ? `
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Quote Ref</th>
+                                <th>Client</th>
+                                <th>Service</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${currentInvoices.map(invoice => {
+                                // Calculate values for each invoice
+                                const client_name = invoice.client_name || invoice.manual_client_name || 'N/A';
+                                const client_email = invoice.client_email || invoice.manual_client_email || '';
+                                const quote_service = invoice.quote_service || invoice.manual_service_name || 'N/A';
+                                const quote_reference = invoice.quote_reference || 'N/A';
+                                
+                                return `
                                     <tr>
-                                        <td><strong>${invoice.invoice_number}</strong></td>
-                                        <td><span class="badge">${invoice.quote_reference}</span></td>
+                                        <td><strong>${invoice.invoice_number || 'N/A'}</strong></td>
+                                        <td><span class="badge">${quote_reference}</span></td>
                                         <td>
                                             <div>
                                                 <strong>${client_name}</strong>
                                                 <br>
-                                                <small style="color: var(--text-secondary)">${ client_email }</small>
+                                                <small style="color: var(--text-secondary)">${client_email}</small>
                                             </div>
                                         </td>
-                                        <td>${invoice.quote_service || 'N/A'}</td>
-                                        <td><strong>${formatCurrency(invoice.total)}</strong></td>
+                                        <td>${quote_service}</td>
+                                        <td><strong>${formatCurrency(invoice.total || 0)}</strong></td>
                                         <td>
-                                            <span class="status-badge status-${invoice.payment_status}">
-                                                ${invoice.payment_status}
+                                            <span class="status-badge status-${invoice.payment_status || 'pending'}">
+                                                ${invoice.payment_status || 'pending'}
                                             </span>
                                         </td>
                                         <td>
@@ -77,7 +71,7 @@ export async function loadInvoicesPage() {
                                                 <button class="btn-icon view" onclick="window.viewInvoice('${invoice.id}')" title="View">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                ${invoice.payment_status !== 'paid' ? `
+                                                ${(invoice.payment_status || '') !== 'paid' ? `
                                                     <button class="btn-icon edit" onclick="window.markInvoicePaid('${invoice.id}')" title="Mark as Paid">
                                                         <i class="fas fa-check-circle"></i>
                                                     </button>
@@ -85,41 +79,42 @@ export async function loadInvoicesPage() {
                                                 <button class="btn-icon delete" onclick="window.deleteInvoice('${invoice.id}')" title="Delete">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                
                                             </div>
                                         </td>
                                     </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                ` : `
-                    <div class="empty-state">
-                        <i class="fas fa-file-invoice"></i>
-                        <h3>No Invoices Yet</h3>
-                        <p>Create your first invoice from a quote</p>
-                        <button class="btn btn-primary" onclick="window.createNewInvoice()">
-                            <i class="fas fa-plus"></i>
-                            Create Invoice
-                        </button>
-                    </div>
-                `}
-            </div>
-        `;
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            ` : `
+                <div class="empty-state">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>No Invoices Yet</h3>
+                    <p>Create your first invoice from a quote</p>
+                    <button class="btn btn-primary" onclick="window.createNewInvoice()">
+                        <i class="fas fa-plus"></i>
+                        Create Invoice
+                    </button>
+                </div>
+            `}
+        </div>
+    `;
 
-        window.createNewInvoice = createNewInvoice;
-        window.viewInvoice = viewInvoice;
-        window.deleteInvoice = deleteInvoice;
-        window.markInvoicePaid = markInvoicePaid;
-        window.addLineItem = addLineItem;
-        window.removeLineItem = removeLineItem;
+    window.createNewInvoice = createNewInvoice;
+    window.viewInvoice = viewInvoice;
+    window.deleteInvoice = deleteInvoice;
+    window.markInvoicePaid = markInvoicePaid;
+    window.addLineItem = addLineItem;
+    window.removeLineItem = removeLineItem;
 
-        setupInvoiceForm();
+    setupInvoiceForm();
 
-    } catch (error) {
-        console.error('Failed to load invoices:', error);
-        showToast('error', 'Error', 'Failed to load invoices');
-    }
+} catch (error) {
+    console.error('Failed to load invoices:', error);
+    showToast('error', 'Error', 'Failed to load invoices');
+}
+    
 }
 
 async function createNewInvoice() {
