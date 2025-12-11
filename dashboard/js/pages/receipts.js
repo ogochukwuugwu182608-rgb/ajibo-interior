@@ -148,7 +148,7 @@ async function createNewReceipt() {
                     </div>
                     <div class="form-group"> 
                     <label>Service Name</label>
-                        <input type="text" class="form-control manual"  name="manualServiceName" 
+                        <input type="text" class="form-control manual"  name="manual_client_name" 
                         placeholder="Enter service name...">
                     </div>
                 
@@ -483,12 +483,17 @@ function setupReceiptForm() {
         });
 
         const payload = {
-            invoice_id: parseInt(formData.get('invoice_id')),
-            transaction_id: formData.get('transaction_id'),
-            payment_method: formData.get('payment_method'),
-            notes: formData.get('notes'),
-            line_items
-        };
+    invoice_id: parseInt(formData.get('invoice_id')) || null,
+    transaction_id: formData.get('transaction_id'),
+    payment_method: formData.get('payment_method'),
+    notes: formData.get('notes'),
+    line_items,
+
+    manual_client_name: formData.get("manual_client_name") || null,
+    manual_service_name: formData.get("manualServiceName") || null,
+    manual_client_email: formData.get("manual_client_email") || null,
+    manual_client_phone: formData.get("manual_client_phone") || null,
+};
 
         try {
             await ReceiptsAPI.create(payload);
