@@ -152,7 +152,7 @@ async function createNewInvoice() {
                     </div>
                     <div class="form-group"> 
                     <label>Service Name</label>
-                        <input type="text" class="form-control" name="manaul_service_name" placeholder="Enter service name...">
+                        <input type="text" class="form-control" name="manual_service_name" placeholder="Enter service name...">
                     </div>
                 
                 </div>
