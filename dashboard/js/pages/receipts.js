@@ -497,7 +497,6 @@ function setupReceiptForm() {
 
         try {
             await ReceiptsAPI.create(payload);
-            console.log(payload)
             showToast("success", "Receipt Created", "Receipt has been successfully created!");
             closeModal("receiptModal");
             loadReceiptsPage();
