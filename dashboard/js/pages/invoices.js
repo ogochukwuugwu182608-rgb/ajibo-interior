@@ -349,7 +349,7 @@ async function viewInvoice(id) {
         const client_email =  invoice.client_email ? invoice.client_email : invoice.manual_client_email;
         const client_phone  =  invoice.client_phone ? invoice.client_phone : invoice.manual_client_phone;
         const quote_service =  invoice.quote_service ? invoice.quote_service : invoice.manual_service_name;
-        const quote_reference  =  invoice.quote_reference ? invoice.quote_reference : N/A;
+        const quote_reference  =  invoice.quote_reference ? invoice.quote_reference : 'N/A';
 
       
         const modalBody = document.getElementById('viewInvoiceBody');
