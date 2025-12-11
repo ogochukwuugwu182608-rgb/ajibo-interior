@@ -695,7 +695,7 @@ img {
 
 .team-section {
     position: relative;
-    background: url('img/team1.jpg') center/cover no-repeat;
+    background: url('../img/team1.jpg') center/cover no-repeat;
     padding: 200px 0 120px;
 }
 
