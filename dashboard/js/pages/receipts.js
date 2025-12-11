@@ -489,7 +489,7 @@ function setupReceiptForm() {
     line_items,
 
     manual_client_name: formData.get("manual_client_name") || null,
-    manual_service_name: formData.get("manual_client_name") || null,
+    manual_service_name: formData.get("manual_service_name") || null,
     manual_client_email: formData.get("manual_client_email") || null,
     manual_client_phone: formData.get("manual_client_phone") || null,
 };
