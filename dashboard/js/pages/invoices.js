@@ -514,7 +514,7 @@ function setupInvoiceForm() {
 
         const invoiceData = {
             ...(formData.get('quote_id') && { quote_id: formData.get('quote_id') }),
-            manualServiceName: formData.get('manual_service_name'),
+            manual_service_name: formData.get('manual_service_name'),
             manual_client_name: formData.get('manual_client_name'),
             manual_client_email: formData.get('manual_client_email'),
             manual_client_phone: formData.get('manual_client_phone'),
