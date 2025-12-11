@@ -357,7 +357,7 @@ modalBody.innerHTML = `
             <td><strong>Email:</strong> ${client_email}</td>
         </tr>
         <tr>
-            <td><strong>Phone:</strong> ${client_phone'}</td>
+            <td><strong>Phone:</strong> ${client_phone}</td>
             <td><strong>Service:</strong> ${ quote_service }</td>
         </tr>
         <tr>
