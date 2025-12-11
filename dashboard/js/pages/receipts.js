@@ -331,7 +331,7 @@ async function viewReceipt(id) {
         const client_name =  receipt.client_name ? receipt.client_name : receipt.manual_client_name;
         const client_email =  receipt.client_email ? receipt.client_email : receipt.manual_client_email;
         const client_phone  =  receipt.client_phone ? receipt.client_phone : receipt.manual_client_phone;
-        const invoice_number  =  receipt.invoice_number ? receipt.invoice_number : N/A;
+        const invoice_number  =  receipt.invoice_number ? receipt.invoice_number;
         const quote_service = receipt.service_type || receipt.manual_service_name  || "N/A";
       
 modalBody.innerHTML = `
@@ -357,8 +357,8 @@ modalBody.innerHTML = `
             <td><strong>Email:</strong> ${client_email}</td>
         </tr>
         <tr>
-            <td><strong>Phone:</strong> ${client_phone || 'N/A'}</td>
-            <td><strong>Service:</strong> ${receipt.service_type || 'N/A'}</td>
+            <td><strong>Phone:</strong> ${client_phone'}</td>
+            <td><strong>Service:</strong> ${ quote_service }</td>
         </tr>
         <tr>
             <td><strong>Payment Status:</strong> ${receipt.payment_method}</td>
