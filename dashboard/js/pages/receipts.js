@@ -148,7 +148,7 @@ async function createNewReceipt() {
                     </div>
                     <div class="form-group"> 
                     <label>Service Name</label>
-                        <input type="text" class="form-control manual"  name="manual_client_name" 
+                        <input type="text" class="form-control manual"  name="manual_service_name" 
                         placeholder="Enter service name...">
                     </div>
                 
@@ -328,10 +328,10 @@ async function viewReceipt(id) {
 
         const modalBody = document.getElementById('viewReceiptBody');
    
- const client_name =  receipt.client_name ? receipt.client_name : receipt.manual_client_name;
+        const client_name =  receipt.client_name ? receipt.client_name : receipt.manual_client_name;
         const client_email =  receipt.client_email ? receipt.client_email : receipt.manual_client_email;
         const client_phone  =  receipt.client_phone ? receipt.client_phone : receipt.manual_client_phone;
-        // const quote_service =  receipt.quote_service ? receipt.quote_service : receipt.manual_service_name;
+        const quote_service =  receipt.quote_service ? receipt.quote_service : receipt.manual_service_name;
         const invoice_number  =  receipt.invoice_number ? receipt.invoice_number : N/A;
 
       
