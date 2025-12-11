@@ -396,11 +396,11 @@ modalBody.innerHTML = `
     <table class="total-table">
         <tr>
             <td><strong>Tax:</strong></td>
-            <td>${receipt.tax_amount || 0}</td>
+        <td>${receipt.tax_amount ? formatCurrency(parseFloat(receipt.tax_amount)) : formatCurrency(0)}</td>
         </tr>
         <tr>
             <td><strong>Total:</strong></td>
-            <td class="grand-total">${formatCurrency(receipt.total)}</td>
+        <td class="grand-total">${formatCurrency(parseFloat(receipt.total || 0))}</td>
         </tr>
     </table>
 
