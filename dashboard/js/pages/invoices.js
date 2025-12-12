@@ -110,8 +110,6 @@ export async function loadInvoicesPage() {
         showToast('error', 'Error', 'Failed to load invoices');
     }
 }
-
-
 async function createNewInvoice() {
     try {
         showLoading();
@@ -315,6 +313,11 @@ async function createNewInvoice() {
             });
         }
 
+        // Initialize with quote mode if quotes available, else manual mode
+        if (!hasQuotes && manualBtn) {
+            manualBtn.click();
+        }
+
         // Reset line items
         currentLineItems = [];
         addLineItem();
@@ -329,8 +332,6 @@ async function createNewInvoice() {
         showLoading(false);
     }
 }
-
-
 
 
 
