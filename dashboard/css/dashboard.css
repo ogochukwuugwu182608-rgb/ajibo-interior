@@ -584,6 +584,246 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/* Add these styles to your dashboard.css file */
+
+/* Payment Details Styles */
+.payment-details {
+    padding: 2rem;
+}
+
+.payment-details h2 {
+    color: var(--primary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.detail-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.detail-section h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-table tr:last-child {
+    border-bottom: none;
+}
+
+.info-table td {
+    padding: 0.75rem 0;
+    vertical-align: top;
+}
+
+.info-table td:first-child {
+    width: 35%;
+    color: var(--text-secondary);
+}
+
+.info-table td:last-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Status Badge Styles */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-paid {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.status-pending {
+    background: rgba(251, 191, 36, 0.1);
+    color: #f59e0b;
+}
+
+.status-overdue {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.status-draft {
+    background: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+}
+
+/* Payment Form Preview Box */
+#invoiceCustomerPreview {
+    animation: fadeIn 0.3s ease-in;
+}
+
+#invoiceCustomerPreview h4 {
+    color: var(--primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#invoiceCustomerPreview p {
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+}
+
+#invoiceCustomerPreview strong {
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: inline-block;
+    min-width: 100px;
+}
+
+/* Toggle Buttons Styling */
+.form-group button.btn {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.form-group button.btn.btn-primary {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+}
+
+.form-group button.btn.btn-secondary {
+    opacity: 0.7;
+}
+
+.form-group button.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+    .payment-details {
+        padding: 1rem;
+    }
+    
+    .detail-section {
+        padding: 1rem;
+    }
+    
+    .info-table td:first-child {
+        width: 40%;
+    }
+    
+    .form-group button.btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Table Actions Improvements */
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+.btn-icon.view {
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+.btn-icon.view:hover {
+    background: rgba(var(--primary-rgb), 0.2);
+    transform: scale(1.1);
+}
+
+.btn-icon.edit {
+    color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.btn-icon.edit:hover {
+    background: rgba(16, 185, 129, 0.2);
+    transform: scale(1.1);
+}
+
+.btn-icon.delete {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-icon.delete:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==================== CARDS ==================== */
 .card {
     background: var(--bg-primary);
