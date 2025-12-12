@@ -284,30 +284,30 @@ export const InvoicesAPI = {
 export const PaymentsAPI = {
     async getAll(filters = {}) {
         const params = new URLSearchParams(filters);
-        const response = await apiRequest(`/payments/?${params}`);
+        const response = await api(`/payments/?${params}`);
         return response;
     },
 
     async getById(id) {
-        return await apiRequest(`/payments/${id}/`);
+        return await api(`/payments/${id}/`);
     },
 
     async create(data) {
-        return await apiRequest('/payments/', {
+        return await api('/payments/', {
             method: 'POST',
             body: JSON.stringify(data)
         });
     },
 
     async update(id, data) {
-        return await apiRequest(`/payments/${id}/`, {
+        return await api(`/payments/${id}/`, {
             method: 'PATCH',
             body: JSON.stringify(data)
         });
     },
 
     async delete(id) {
-        return await apiRequest(`/payments/${id}/`, {
+        return await api(`/payments/${id}/`, {
             method: 'DELETE'
         });
     },
