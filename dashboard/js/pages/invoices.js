@@ -110,6 +110,7 @@ export async function loadInvoicesPage() {
         showToast('error', 'Error', 'Failed to load invoices');
     }
 }
+
 async function createNewInvoice() {
     try {
         showLoading();
@@ -117,8 +118,6 @@ async function createNewInvoice() {
         // Fetch available quotes
         const response = await InvoicesAPI.getAvailableQuotes();
         availableQuotes = response || [];
-        
-        const hasQuotes = availableQuotes.length > 0;
 
         // Update modal content with new form
         const modalBody = document.querySelector('#invoiceModal .modal-body');
@@ -126,11 +125,11 @@ async function createNewInvoice() {
             <!-- Toggle Buttons -->
             <div class="form-group" style="margin-bottom: 2rem;">
                 <div style="display: flex; gap: 1rem; justify-content: center;">
-                    <button type="button" class="btn ${hasQuotes ? 'btn-primary' : 'btn-secondary'}" id="quoteInvoiceBtn" 
-                            style="flex: 1; max-width: 250px;" ${!hasQuotes ? 'disabled' : ''}>
+                    <button type="button" class="btn ${availableQuotes.length > 0 ? 'btn-primary' : 'btn-secondary'}" id="quoteInvoiceBtn" 
+                            style="flex: 1; max-width: 250px;" ${availableQuotes.length === 0 ? 'disabled' : ''}>
                         <i class="fas fa-file-alt"></i> From Quote
                     </button>
-                    <button type="button" class="btn ${!hasQuotes ? 'btn-primary' : 'btn-secondary'}" id="manualInvoiceBtn"
+                    <button type="button" class="btn ${availableQuotes.length === 0 ? 'btn-primary' : 'btn-secondary'}" id="manualInvoiceBtn"
                             style="flex: 1; max-width: 250px;">
                         <i class="fas fa-edit"></i> Manual Invoice
                     </button>
@@ -139,10 +138,10 @@ async function createNewInvoice() {
 
             <form id="invoiceForm">
                 <!-- Quote Invoice Fields -->
-                <div id="quoteFields" style="display: ${hasQuotes ? 'block' : 'none'};">
+                <div id="quoteFields" style="display: ${availableQuotes.length > 0 ? 'block' : 'none'};">
                     <div class="form-group">
                         <label>Select Quote *</label>
-                        <select name="quote_id" id="quoteSelect" ${hasQuotes ? 'required' : ''}>
+                        <select name="quote_id" id="quoteSelect" ${availableQuotes.length > 0 ? 'required' : ''}>
                             <option value="">-- Select a quote --</option>
                             ${availableQuotes.map(quote => `
                                 <option value="${quote.id}" data-quote='${JSON.stringify(quote)}'>
@@ -150,8 +149,8 @@ async function createNewInvoice() {
                                 </option>
                             `).join('')}
                         </select>
-                        ${!hasQuotes ? 
-                            '<small style="color: #dc3545; display: block; margin-top: 0.5rem;">No quotes available. Please use Manual Invoice.</small>' 
+                        ${availableQuotes.length === 0 ? 
+                            '<small style="color: red; display: block; margin-top: 0.5rem;">No quotes available. Please use Manual Invoice.</small>' 
                             : ''}
                     </div>
 
@@ -166,29 +165,29 @@ async function createNewInvoice() {
                 </div>
 
                 <!-- Manual Invoice Fields -->
-                <div id="manualFields" style="display: ${!hasQuotes ? 'block' : 'none'};">
+                <div id="manualFields" style="display: ${availableQuotes.length === 0 ? 'block' : 'none'};">
                     <div class="form-row">
                         <div class="form-group"> 
                             <label>Client Name *</label>
-                            <input type="text" class="form-control manual-required" name="manual_client_name" 
-                                   placeholder="Enter client name..." ${!hasQuotes ? 'required' : ''}>
+                            <input type="text" class="form-control manual" name="manual_client_name" 
+                                   placeholder="Enter client name..." ${availableQuotes.length === 0 ? 'required' : ''}>
                         </div>
                         <div class="form-group"> 
                             <label>Service Name *</label>
-                            <input type="text" class="form-control manual-required" name="manual_service_name" 
-                                   placeholder="Enter service name..." ${!hasQuotes ? 'required' : ''}>
+                            <input type="text" class="form-control manual" name="manual_service_name" 
+                                   placeholder="Enter service name..." ${availableQuotes.length === 0 ? 'required' : ''}>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label>Client Email Address (optional)</label>
-                            <input type="email" class="manual-optional" name="manual_client_email" 
+                            <input type="email" class="manual" name="manual_client_email" 
                                    placeholder="Enter client email...">
                         </div>
                         <div class="form-group">
                             <label>Client Phone (optional)</label>
-                            <input type="tel" class="manual-optional" name="manual_client_phone" 
+                            <input type="tel" class="manual" name="manual_client_phone" 
                                    placeholder="Enter client phone...">
                         </div>
                     </div>
@@ -232,18 +231,17 @@ async function createNewInvoice() {
             </form>
         `;
 
-        // Get references to toggle elements
+        // Setup toggle buttons
         const quoteBtn = document.getElementById('quoteInvoiceBtn');
         const manualBtn = document.getElementById('manualInvoiceBtn');
         const quoteFields = document.getElementById('quoteFields');
         const manualFields = document.getElementById('manualFields');
         const quoteSelect = document.getElementById('quoteSelect');
-        const quoteDetails = document.getElementById('quoteDetails');
 
         // Toggle to Quote Invoice mode
         if (quoteBtn) {
             quoteBtn.addEventListener('click', () => {
-                if (!hasQuotes) return; // Don't allow if no quotes
+                if (availableQuotes.length === 0) return; // Don't allow if no quotes
                 
                 // Update button styles
                 quoteBtn.classList.remove('btn-secondary');
@@ -257,13 +255,9 @@ async function createNewInvoice() {
                 
                 // Update required fields
                 quoteSelect.required = true;
-                document.querySelectorAll('.manual-required').forEach(input => {
-                    input.required = false;
-                });
-                
-                // Clear manual fields
-                document.querySelectorAll('.manual-required, .manual-optional').forEach(input => {
-                    input.value = '';
+                document.querySelectorAll('.manual').forEach(m => {
+                    m.required = false;
+                    m.value = '';
                 });
             });
         }
@@ -280,20 +274,22 @@ async function createNewInvoice() {
                 // Show/Hide fields
                 quoteFields.style.display = 'none';
                 manualFields.style.display = 'block';
-                
-                // Hide quote details if shown
-                if (quoteDetails) {
-                    quoteDetails.style.display = 'none';
-                }
+                document.getElementById('quoteDetails').style.display = 'none';
                 
                 // Update required fields
                 quoteSelect.required = false;
                 quoteSelect.value = '';
-                document.querySelectorAll('.manual-required').forEach(input => {
-                    input.required = true;
+                document.querySelectorAll('.manual').forEach(m => {
+                    if (m.name === 'manual_client_name' || m.name === 'manual_service_name') {
+                        m.required = true;
+                    }
                 });
             });
         }
+
+        // Reset line items
+        currentLineItems = [];
+        addLineItem();
 
         // Setup quote select handler
         if (quoteSelect) {
@@ -301,26 +297,17 @@ async function createNewInvoice() {
                 const selectedOption = e.target.selectedOptions[0];
                 if (selectedOption && selectedOption.value) {
                     const quote = JSON.parse(selectedOption.dataset.quote);
-                    quoteDetails.style.display = 'block';
+                    document.getElementById('quoteDetails').style.display = 'block';
                     document.getElementById('quoteClient').textContent = quote.name;
                     document.getElementById('quoteEmail').textContent = quote.email;
                     document.getElementById('quotePhone').textContent = quote.phone;
                     document.getElementById('quoteService').textContent = quote.service_display;
                     document.getElementById('quoteMessage').textContent = quote.message;
                 } else {
-                    quoteDetails.style.display = 'none';
+                    document.getElementById('quoteDetails').style.display = 'none';
                 }
             });
         }
-
-        // Initialize with quote mode if quotes available, else manual mode
-        if (!hasQuotes && manualBtn) {
-            manualBtn.click();
-        }
-
-        // Reset line items
-        currentLineItems = [];
-        addLineItem();
 
         setupInvoiceForm();
         openModal('invoiceModal');
@@ -332,11 +319,6 @@ async function createNewInvoice() {
         showLoading(false);
     }
 }
-
-
-
-
-
 
 window.addLineItem = addLineItem;
 window.removeLineItem = removeLineItem;
