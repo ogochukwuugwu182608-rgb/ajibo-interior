@@ -237,7 +237,6 @@ async function createNewInvoice() {
         const quoteFields = document.getElementById('quoteFields');
         const manualFields = document.getElementById('manualFields');
         const quoteSelect = document.getElementById('quoteSelect');
-        console.log(document.getElementById('manualInvoiceBtn')
 
         // Toggle to Quote Invoice mode
         if (quoteBtn) {
@@ -512,14 +511,12 @@ function setupInvoiceForm() {
     const form = document.getElementById('invoiceForm');
     if (!form) return;
 
-    const newForm = form.cloneNode(true);
-    form.parentNode.replaceChild(newForm, form);
-
-    newForm.addEventListener('submit', async (e) => {
+    // Just attach the submit handler — do NOT clone or replace the form
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         showLoading();
 
-        const formData = new FormData(newForm);
+        const formData = new FormData(form);
 
         // Collect line items
         const lineItems = [];
@@ -553,13 +550,11 @@ function setupInvoiceForm() {
             line_items: lineItems
         };
 
-        console.log(invoiceData);
-
         try {
             await InvoicesAPI.create(invoiceData);
             showToast('success', 'Created', 'Invoice created successfully');
             closeModal('invoiceModal');
-            newForm.reset();
+            form.reset();
             loadInvoicesPage();
         } catch (error) {
             showToast('error', 'Error', error.message || 'Failed to create invoice');
@@ -568,6 +563,7 @@ function setupInvoiceForm() {
         }
     });
 }
+
 
 // PDF Download functionality
 let invoicedownload = document.getElementById('invoicedownload');
