@@ -279,57 +279,41 @@ export const InvoicesAPI = {
 
 
 
-
 // Payment API
 export const PaymentsAPI = {
     async getAll(filters = {}) {
         const params = new URLSearchParams(filters);
-        const response = await apiRequest(`/payments/?${params}`);
-        return response;
+        return await api.get(`/payments/?${params}`);
     },
 
     async getById(id) {
-        return await apiRequest(`/payments/${id}/`);
+        return await api.get(`/payments/${id}/`);
     },
 
     async create(data) {
-        return await apiRequest('/payments/', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        });
+        return await api.post('/payments/', data);
     },
 
     async update(id, data) {
-        return await apiRequest(`/payments/${id}/`, {
-            method: 'PATCH',
-            body: JSON.stringify(data)
-        });
+        return await api.patch(`/payments/${id}/`, data);
     },
 
     async delete(id) {
-        return await apiRequest(`/payments/${id}/`, {
-            method: 'DELETE'
-        });
+        return await api.delete(`/payments/${id}/`);
     },
 
     async getUnpaidInvoices() {
-        return await apiRequest('/payments/unpaid_invoices/');
+        return await api.get('/payments/unpaid_invoices/');
     },
 
     async markCompleted(id) {
-        return await apiRequest(`/payments/${id}/mark_completed/`, {
-            method: 'POST'
-        });
+        return await api.post(`/payments/${id}/mark_completed/`);
     },
 
     async markFailed(id) {
-        return await apiRequest(`/payments/${id}/mark_failed/`, {
-            method: 'POST'
-        });
+        return await api.post(`/payments/${id}/mark_failed/`);
     }
 };
-
-
 // Add these methods to your ReceiptsAPI in api.js
 
 export const ReceiptsAPI = {
