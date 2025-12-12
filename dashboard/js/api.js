@@ -280,6 +280,54 @@ export const InvoicesAPI = {
 
 
 
+// Payment API
+export const PaymentsAPI = {
+    async getAll(filters = {}) {
+        const params = new URLSearchParams(filters);
+        const response = await apiRequest(`/payments/?${params}`);
+        return response;
+    },
+
+    async getById(id) {
+        return await apiRequest(`/payments/${id}/`);
+    },
+
+    async create(data) {
+        return await apiRequest('/payments/', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    },
+
+    async update(id, data) {
+        return await apiRequest(`/payments/${id}/`, {
+            method: 'PATCH',
+            body: JSON.stringify(data)
+        });
+    },
+
+    async delete(id) {
+        return await apiRequest(`/payments/${id}/`, {
+            method: 'DELETE'
+        });
+    },
+
+    async getUnpaidInvoices() {
+        return await apiRequest('/payments/unpaid_invoices/');
+    },
+
+    async markCompleted(id) {
+        return await apiRequest(`/payments/${id}/mark_completed/`, {
+            method: 'POST'
+        });
+    },
+
+    async markFailed(id) {
+        return await apiRequest(`/payments/${id}/mark_failed/`, {
+            method: 'POST'
+        });
+    }
+};
 
 
 // Add these methods to your ReceiptsAPI in api.js
