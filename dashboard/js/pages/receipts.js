@@ -10,7 +10,7 @@ export async function loadReceiptsPage() {
         const data = await ReceiptsAPI.getAll();
         const receipts = data.results || [];
 
-        console.log(receipts);
+        // console.log(receipts);
 
         pageContent.innerHTML = `
             <div class="card">
@@ -493,7 +493,7 @@ function setupReceiptForm() {
     manual_client_email: formData.get("manual_client_email") || null,
     manual_client_phone: formData.get("manual_client_phone") || null,
 };
-        
+        console.log(payload);
 
         try {
             await ReceiptsAPI.create(payload);
