@@ -11,8 +11,6 @@ export async function loadInvoicesPage() {
         const data = await InvoicesAPI.getAll();
         currentInvoices = data.results || [];
         
-        console.log(currentInvoices);
-        
         pageContent.innerHTML = `
             <div class="card">
                 <div class="card-header">
@@ -127,11 +125,11 @@ async function createNewInvoice() {
             <!-- Toggle Buttons -->
             <div class="form-group" style="margin-bottom: 2rem;">
                 <div style="display: flex; gap: 1rem; justify-content: center;">
-                    <button type="button" class="btn btn-primary" id="quoteInvoiceBtn" 
-                            style="flex: 1; max-width: 250px;">
+                    <button type="button" class="btn ${availableQuotes.length > 0 ? 'btn-primary' : 'btn-secondary'}" id="quoteInvoiceBtn" 
+                            style="flex: 1; max-width: 250px;" ${availableQuotes.length === 0 ? 'disabled' : ''}>
                         <i class="fas fa-file-alt"></i> From Quote
                     </button>
-                    <button type="button" class="btn btn-secondary" id="manualInvoiceBtn"
+                    <button type="button" class="btn ${availableQuotes.length === 0 ? 'btn-primary' : 'btn-secondary'}" id="manualInvoiceBtn"
                             style="flex: 1; max-width: 250px;">
                         <i class="fas fa-edit"></i> Manual Invoice
                     </button>
@@ -140,10 +138,10 @@ async function createNewInvoice() {
 
             <form id="invoiceForm">
                 <!-- Quote Invoice Fields -->
-                <div id="quoteFields" style="display: block;">
+                <div id="quoteFields" style="display: ${availableQuotes.length > 0 ? 'block' : 'none'};">
                     <div class="form-group">
                         <label>Select Quote *</label>
-                        <select name="quote_id" id="quoteSelect">
+                        <select name="quote_id" id="quoteSelect" ${availableQuotes.length > 0 ? 'required' : ''}>
                             <option value="">-- Select a quote --</option>
                             ${availableQuotes.map(quote => `
                                 <option value="${quote.id}" data-quote='${JSON.stringify(quote)}'>
@@ -152,7 +150,7 @@ async function createNewInvoice() {
                             `).join('')}
                         </select>
                         ${availableQuotes.length === 0 ? 
-                            '<small style="color: var(--danger);">No quotes available. Switch to Manual Invoice.</small>' 
+                            '<small style="color: red; display: block; margin-top: 0.5rem;">No quotes available. Please use Manual Invoice.</small>' 
                             : ''}
                     </div>
 
@@ -167,17 +165,17 @@ async function createNewInvoice() {
                 </div>
 
                 <!-- Manual Invoice Fields -->
-                <div id="manualFields" style="display: none;">
+                <div id="manualFields" style="display: ${availableQuotes.length === 0 ? 'block' : 'none'};">
                     <div class="form-row">
                         <div class="form-group"> 
                             <label>Client Name *</label>
                             <input type="text" class="form-control manual" name="manual_client_name" 
-                                   placeholder="Enter client name...">
+                                   placeholder="Enter client name..." ${availableQuotes.length === 0 ? 'required' : ''}>
                         </div>
                         <div class="form-group"> 
                             <label>Service Name *</label>
                             <input type="text" class="form-control manual" name="manual_service_name" 
-                                   placeholder="Enter service name...">
+                                   placeholder="Enter service name..." ${availableQuotes.length === 0 ? 'required' : ''}>
                         </div>
                     </div>
                     
@@ -241,45 +239,52 @@ async function createNewInvoice() {
         const quoteSelect = document.getElementById('quoteSelect');
 
         // Toggle to Quote Invoice mode
-        quoteBtn.addEventListener('click', () => {
-            quoteBtn.classList.remove('btn-secondary');
-            quoteBtn.classList.add('btn-primary');
-            manualBtn.classList.remove('btn-primary');
-            manualBtn.classList.add('btn-secondary');
-            
-            quoteFields.style.display = 'block';
-            manualFields.style.display = 'none';
-            
-            quoteSelect.required = true;
-            document.querySelectorAll('.manual').forEach(m => {
-                m.required = false;
-                m.value = '';
+        if (quoteBtn) {
+            quoteBtn.addEventListener('click', () => {
+                if (availableQuotes.length === 0) return; // Don't allow if no quotes
+                
+                // Update button styles
+                quoteBtn.classList.remove('btn-secondary');
+                quoteBtn.classList.add('btn-primary');
+                manualBtn.classList.remove('btn-primary');
+                manualBtn.classList.add('btn-secondary');
+                
+                // Show/Hide fields
+                quoteFields.style.display = 'block';
+                manualFields.style.display = 'none';
+                
+                // Update required fields
+                quoteSelect.required = true;
+                document.querySelectorAll('.manual').forEach(m => {
+                    m.required = false;
+                    m.value = '';
+                });
             });
-        });
+        }
 
         // Toggle to Manual Invoice mode
-        manualBtn.addEventListener('click', () => {
-            manualBtn.classList.remove('btn-secondary');
-            manualBtn.classList.add('btn-primary');
-            quoteBtn.classList.remove('btn-primary');
-            quoteBtn.classList.add('btn-secondary');
-            
-            quoteFields.style.display = 'none';
-            manualFields.style.display = 'block';
-            document.getElementById('quoteDetails').style.display = 'none';
-            
-            quoteSelect.required = false;
-            quoteSelect.value = '';
-            document.querySelectorAll('.manual').forEach(m => {
-                if (m.name === 'manual_client_name' || m.name === 'manual_service_name') {
-                    m.required = true;
-                }
+        if (manualBtn) {
+            manualBtn.addEventListener('click', () => {
+                // Update button styles
+                manualBtn.classList.remove('btn-secondary');
+                manualBtn.classList.add('btn-primary');
+                quoteBtn.classList.remove('btn-primary');
+                quoteBtn.classList.add('btn-secondary');
+                
+                // Show/Hide fields
+                quoteFields.style.display = 'none';
+                manualFields.style.display = 'block';
+                document.getElementById('quoteDetails').style.display = 'none';
+                
+                // Update required fields
+                quoteSelect.required = false;
+                quoteSelect.value = '';
+                document.querySelectorAll('.manual').forEach(m => {
+                    if (m.name === 'manual_client_name' || m.name === 'manual_service_name') {
+                        m.required = true;
+                    }
+                });
             });
-        });
-
-        // Initialize with quote mode if quotes available, else manual mode
-        if (availableQuotes.length === 0) {
-            manualBtn.click();
         }
 
         // Reset line items
@@ -287,20 +292,22 @@ async function createNewInvoice() {
         addLineItem();
 
         // Setup quote select handler
-        quoteSelect.addEventListener('change', (e) => {
-            const selectedOption = e.target.selectedOptions[0];
-            if (selectedOption && selectedOption.value) {
-                const quote = JSON.parse(selectedOption.dataset.quote);
-                document.getElementById('quoteDetails').style.display = 'block';
-                document.getElementById('quoteClient').textContent = quote.name;
-                document.getElementById('quoteEmail').textContent = quote.email;
-                document.getElementById('quotePhone').textContent = quote.phone;
-                document.getElementById('quoteService').textContent = quote.service_display;
-                document.getElementById('quoteMessage').textContent = quote.message;
-            } else {
-                document.getElementById('quoteDetails').style.display = 'none';
-            }
-        });
+        if (quoteSelect) {
+            quoteSelect.addEventListener('change', (e) => {
+                const selectedOption = e.target.selectedOptions[0];
+                if (selectedOption && selectedOption.value) {
+                    const quote = JSON.parse(selectedOption.dataset.quote);
+                    document.getElementById('quoteDetails').style.display = 'block';
+                    document.getElementById('quoteClient').textContent = quote.name;
+                    document.getElementById('quoteEmail').textContent = quote.email;
+                    document.getElementById('quotePhone').textContent = quote.phone;
+                    document.getElementById('quoteService').textContent = quote.service_display;
+                    document.getElementById('quoteMessage').textContent = quote.message;
+                } else {
+                    document.getElementById('quoteDetails').style.display = 'none';
+                }
+            });
+        }
 
         setupInvoiceForm();
         openModal('invoiceModal');
@@ -377,7 +384,6 @@ async function viewInvoice(id) {
     try {
         showLoading();
         const invoice = await InvoicesAPI.getById(id);
-        console.log(invoice);
 
         const client_name = invoice.client_name || invoice.manual_client_name || 'N/A';
         const client_email = invoice.client_email || invoice.manual_client_email || 'N/A';
@@ -387,7 +393,6 @@ async function viewInvoice(id) {
 
         const modalBody = document.getElementById('viewInvoiceBody');
 
-        // Invoice HTML Structure
         modalBody.innerHTML = `
             <div class="invoice-wrapper">
                 <div class="invoice-header">
