@@ -265,6 +265,7 @@ async function createNewInvoice() {
         // Toggle to Manual Invoice mode
         if (manualBtn) {
             manualBtn.addEventListener('click', () => {
+                console.log('gggggggggggggggg');
                 // Update button styles
                 manualBtn.classList.remove('btn-secondary');
                 manualBtn.classList.add('btn-primary');
