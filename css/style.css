@@ -24,7 +24,7 @@
     --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, rgb(0, 88, 175) 0%, rgb(164, 214, 247) 100%);
+    --gradient-primary: linear-gradient(135deg, rgb(0, 88, 175) 0%, rgb(11, 111, 179) 100%);
     --gradient-light:linear-gradient(135deg, rgba(0, 88, 175, 0.4) 0%, rgba(164, 214, 247, 0.4) 100%), url('../img/hero-img.jpg');
     --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
 
@@ -1466,7 +1466,7 @@ textarea.form-control {
     /* Hero Section */
     .hero {
         min-height: 80vh;
-        padding: 5rem 5% 3rem;
+        padding: 8rem 5% 3rem;
     }
     
     .hero-title {
@@ -1618,7 +1618,7 @@ textarea.form-control {
     /* Hero */
     .hero {
         min-height: 70vh;
-        padding: 4rem 4% 2rem;
+        padding: 7rem 4% 2rem;
     }
     
     .hero-stats {
@@ -1729,7 +1729,7 @@ textarea.form-control {
     }
     
     .hero {
-        padding: 3.5rem 3% 2rem;
+        padding: 6rem 3% 2rem;
     }
     
     .section {
@@ -1771,7 +1771,7 @@ textarea.form-control {
 @media (max-height: 500px) and (orientation: landscape) {
     .hero {
         min-height: 100vh;
-        padding: 2rem 5%;
+        padding: 4rem 5%;
     }
     
     .hero-stats {
