@@ -504,14 +504,87 @@ async function deleteInvoice(id) {
     }
 }
 
+
+// ONLY REPLACE THE setupInvoiceForm function in your code
+// Keep everything else as it was in your original code
+
 function setupInvoiceForm() {
     const form = document.getElementById('invoiceForm');
     if (!form) return;
 
-    // Remove existing listener by cloning
+    // Remove existing listeners to prevent duplicates
     const newForm = form.cloneNode(true);
     form.parentNode.replaceChild(newForm, form);
+    
+    // Re-attach toggle button handlers after cloning
+    const quoteBtn = document.getElementById('quoteInvoiceBtn');
+    const manualBtn = document.getElementById('manualInvoiceBtn');
+    const quoteFields = document.getElementById('quoteFields');
+    const manualFields = document.getElementById('manualFields');
+    const quoteSelect = document.getElementById('quoteSelect');
 
+    // Toggle to Quote Invoice mode
+    if (quoteBtn) {
+        quoteBtn.addEventListener('click', () => {
+            if (availableQuotes.length === 0) return;
+            
+            quoteBtn.classList.remove('btn-secondary');
+            quoteBtn.classList.add('btn-primary');
+            manualBtn.classList.remove('btn-primary');
+            manualBtn.classList.add('btn-secondary');
+            
+            quoteFields.style.display = 'block';
+            manualFields.style.display = 'none';
+            
+            quoteSelect.required = true;
+            document.querySelectorAll('.manual').forEach(m => {
+                m.required = false;
+                m.value = '';
+            });
+        });
+    }
+
+    // Toggle to Manual Invoice mode
+    if (manualBtn) {
+        manualBtn.addEventListener('click', () => {
+            manualBtn.classList.remove('btn-secondary');
+            manualBtn.classList.add('btn-primary');
+            quoteBtn.classList.remove('btn-primary');
+            quoteBtn.classList.add('btn-secondary');
+            
+            quoteFields.style.display = 'none';
+            manualFields.style.display = 'block';
+            document.getElementById('quoteDetails').style.display = 'none';
+            
+            quoteSelect.required = false;
+            quoteSelect.value = '';
+            document.querySelectorAll('.manual').forEach(m => {
+                if (m.name === 'manual_client_name' || m.name === 'manual_service_name') {
+                    m.required = true;
+                }
+            });
+        });
+    }
+
+    // Re-attach quote select handler
+    if (quoteSelect) {
+        quoteSelect.addEventListener('change', (e) => {
+            const selectedOption = e.target.selectedOptions[0];
+            if (selectedOption && selectedOption.value) {
+                const quote = JSON.parse(selectedOption.dataset.quote);
+                document.getElementById('quoteDetails').style.display = 'block';
+                document.getElementById('quoteClient').textContent = quote.name;
+                document.getElementById('quoteEmail').textContent = quote.email;
+                document.getElementById('quotePhone').textContent = quote.phone;
+                document.getElementById('quoteService').textContent = quote.service_display;
+                document.getElementById('quoteMessage').textContent = quote.message;
+            } else {
+                document.getElementById('quoteDetails').style.display = 'none';
+            }
+        });
+    }
+
+    // Now attach the submit handler
     newForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -549,8 +622,8 @@ function setupInvoiceForm() {
         // Get quote_id value
         const quoteIdValue = formData.get('quote_id');
         
-        // Determine mode: if quote field is empty or null, it's manual mode
-        const isManualMode = !quoteIdValue || quoteIdValue === '' || quoteIdValue === 'null';
+        // Check if we're in manual mode (quote field is empty)
+        const isManualMode = !quoteIdValue || quoteIdValue === '';
 
         // Build invoice data
         const invoiceData = {
@@ -561,13 +634,12 @@ function setupInvoiceForm() {
         };
 
         if (isManualMode) {
-            // Manual mode - DON'T include quote_id
+            // Manual mode - DON'T include quote_id at all
             invoiceData.manual_service_name = formData.get('manual_service_name')?.trim() || '';
             invoiceData.manual_client_name = formData.get('manual_client_name')?.trim() || '';
             invoiceData.manual_client_email = formData.get('manual_client_email')?.trim() || '';
             invoiceData.manual_client_phone = formData.get('manual_client_phone')?.trim() || '';
             
-            // Validate
             if (!invoiceData.manual_client_name || !invoiceData.manual_service_name) {
                 showToast('error', 'Error', 'Client name and service name are required');
                 showLoading(false);
@@ -582,17 +654,17 @@ function setupInvoiceForm() {
             invoiceData.manual_client_phone = null;
         }
 
-        console.log('📤 Submitting invoice data:', invoiceData);
+        console.log('📤 Submitting invoice:', invoiceData);
 
         try {
             const response = await InvoicesAPI.create(invoiceData);
-            console.log('✅ Invoice created:', response);
+            console.log('✅ Success:', response);
             showToast('success', 'Created', 'Invoice created successfully');
             closeModal('invoiceModal');
             newForm.reset();
             await loadInvoicesPage();
         } catch (error) {
-            console.error('❌ Invoice creation error:', error);
+            console.error('❌ Error:', error);
             showToast('error', 'Error', error.message || 'Failed to create invoice');
         } finally {
             showLoading(false);
