@@ -1,4 +1,4 @@
-// js/pages/invoices.js
+// js/pages/invoices.js - COMPLETE WORKING VERSION
 import { InvoicesAPI } from '../api.js';
 import { pageContent, openModal, closeModal, showToast, showLoading, formatCurrency, formatDate } from '../main.js';
 
@@ -141,7 +141,7 @@ async function createNewInvoice() {
                 <div id="quoteFields" style="display: ${availableQuotes.length > 0 ? 'block' : 'none'};">
                     <div class="form-group">
                         <label>Select Quote *</label>
-                        <select name="quote_id" id="quoteSelect" ${availableQuotes.length > 0 ? 'required' : ''}>
+                        <select name="quote_id" id="quoteSelect">
                             <option value="">-- Select a quote --</option>
                             ${availableQuotes.map(quote => `
                                 <option value="${quote.id}" data-quote='${JSON.stringify(quote)}'>
@@ -169,25 +169,25 @@ async function createNewInvoice() {
                     <div class="form-row">
                         <div class="form-group"> 
                             <label>Client Name *</label>
-                            <input type="text" class="form-control manual" name="manual_client_name" 
-                                   placeholder="Enter client name..." ${availableQuotes.length === 0 ? 'required' : ''}>
+                            <input type="text" class="form-control manual-field" name="manual_client_name" 
+                                   placeholder="Enter client name...">
                         </div>
                         <div class="form-group"> 
                             <label>Service Name *</label>
-                            <input type="text" class="form-control manual" name="manual_service_name" 
-                                   placeholder="Enter service name..." ${availableQuotes.length === 0 ? 'required' : ''}>
+                            <input type="text" class="form-control manual-field" name="manual_service_name" 
+                                   placeholder="Enter service name...">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label>Client Email Address (optional)</label>
-                            <input type="email" class="manual" name="manual_client_email" 
+                            <input type="email" class="manual-field" name="manual_client_email" 
                                    placeholder="Enter client email...">
                         </div>
                         <div class="form-group">
                             <label>Client Phone (optional)</label>
-                            <input type="tel" class="manual" name="manual_client_phone" 
+                            <input type="tel" class="manual-field" name="manual_client_phone" 
                                    placeholder="Enter client phone...">
                         </div>
                     </div>
@@ -240,51 +240,48 @@ async function createNewInvoice() {
 
         // Toggle to Quote Invoice mode
         if (quoteBtn) {
-            quoteBtn.addEventListener('click', () => {
-                if (availableQuotes.length === 0) return; // Don't allow if no quotes
+            quoteBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 
-                // Update button styles
+                if (availableQuotes.length === 0) return;
+                
+                console.log('📋 Quote mode activated');
+                
                 quoteBtn.classList.remove('btn-secondary');
                 quoteBtn.classList.add('btn-primary');
                 manualBtn.classList.remove('btn-primary');
                 manualBtn.classList.add('btn-secondary');
                 
-                // Show/Hide fields
                 quoteFields.style.display = 'block';
                 manualFields.style.display = 'none';
                 
-                // Update required fields
-                quoteSelect.required = true;
-                document.querySelectorAll('.manual').forEach(m => {
-                    m.required = false;
-                    m.value = '';
+                // Clear manual fields
+                document.querySelectorAll('.manual-field').forEach(field => {
+                    field.value = '';
                 });
             });
         }
 
         // Toggle to Manual Invoice mode
         if (manualBtn) {
-            manualBtn.addEventListener('click', () => {
-                console.log('gggggggggggggggg');
-                // Update button styles
+            manualBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('✍️ Manual mode activated');
+                
                 manualBtn.classList.remove('btn-secondary');
                 manualBtn.classList.add('btn-primary');
                 quoteBtn.classList.remove('btn-primary');
                 quoteBtn.classList.add('btn-secondary');
                 
-                // Show/Hide fields
                 quoteFields.style.display = 'none';
                 manualFields.style.display = 'block';
                 document.getElementById('quoteDetails').style.display = 'none';
                 
-                // Update required fields
-                quoteSelect.required = false;
+                // Clear quote selection
                 quoteSelect.value = '';
-                document.querySelectorAll('.manual').forEach(m => {
-                    if (m.name === 'manual_client_name' || m.name === 'manual_service_name') {
-                        m.required = true;
-                    }
-                });
             });
         }
 
@@ -511,59 +508,97 @@ function setupInvoiceForm() {
     const form = document.getElementById('invoiceForm');
     if (!form) return;
 
-    // Just attach the submit handler — do NOT clone or replace the form
-    form.addEventListener('submit', async (e) => {
+    // Remove existing listener by cloning
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+
+    newForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        e.stopPropagation();
+        
         showLoading();
 
-        const formData = new FormData(form);
+        const formData = new FormData(newForm);
 
         // Collect line items
         const lineItems = [];
         currentLineItems.forEach(itemId => {
             const itemDiv = document.getElementById(`lineItem-${itemId}`);
             if (itemDiv) {
-                lineItems.push({
-                    title: itemDiv.querySelector('.line-item-title').value,
-                    description: itemDiv.querySelector('.line-item-description').value,
-                    quantity: parseInt(itemDiv.querySelector('.line-item-quantity').value),
-                    unit_price: parseFloat(itemDiv.querySelector('.line-item-price').value)
-                });
+                const title = itemDiv.querySelector('.line-item-title')?.value?.trim();
+                const quantity = parseInt(itemDiv.querySelector('.line-item-quantity')?.value);
+                const price = parseFloat(itemDiv.querySelector('.line-item-price')?.value);
+                
+                if (title && !isNaN(quantity) && quantity > 0 && !isNaN(price) && price >= 0) {
+                    lineItems.push({
+                        title: title,
+                        description: itemDiv.querySelector('.line-item-description')?.value?.trim() || '',
+                        quantity: quantity,
+                        unit_price: price
+                    });
+                }
             }
         });
 
         if (lineItems.length === 0) {
-            showToast('error', 'Error', 'Please add at least one line item');
+            showToast('error', 'Error', 'Please add at least one valid line item');
             showLoading(false);
             return;
         }
 
+        // Get quote_id value
+        const quoteIdValue = formData.get('quote_id');
+        
+        // Determine mode: if quote field is empty or null, it's manual mode
+        const isManualMode = !quoteIdValue || quoteIdValue === '' || quoteIdValue === 'null';
+
+        // Build invoice data
         const invoiceData = {
-            quote_id: formData.get('quote_id') ? parseInt(formData.get('quote_id')) : null,
-            manual_service_name: formData.get('manual_service_name') || null,
-            manual_client_name: formData.get('manual_client_name') || null,
-            manual_client_email: formData.get('manual_client_email') || null,
-            manual_client_phone: formData.get('manual_client_phone') || null,
             due_date: formData.get('due_date'),
-            tax_rate: parseFloat(formData.get('tax_rate')),
-            notes: formData.get('notes') || '',
+            tax_rate: parseFloat(formData.get('tax_rate')) || 0,
+            notes: formData.get('notes')?.trim() || '',
             line_items: lineItems
         };
 
+        if (isManualMode) {
+            // Manual mode - DON'T include quote_id
+            invoiceData.manual_service_name = formData.get('manual_service_name')?.trim() || '';
+            invoiceData.manual_client_name = formData.get('manual_client_name')?.trim() || '';
+            invoiceData.manual_client_email = formData.get('manual_client_email')?.trim() || '';
+            invoiceData.manual_client_phone = formData.get('manual_client_phone')?.trim() || '';
+            
+            // Validate
+            if (!invoiceData.manual_client_name || !invoiceData.manual_service_name) {
+                showToast('error', 'Error', 'Client name and service name are required');
+                showLoading(false);
+                return;
+            }
+        } else {
+            // Quote mode - include quote_id
+            invoiceData.quote_id = quoteIdValue;
+            invoiceData.manual_service_name = null;
+            invoiceData.manual_client_name = null;
+            invoiceData.manual_client_email = null;
+            invoiceData.manual_client_phone = null;
+        }
+
+        console.log('📤 Submitting invoice data:', invoiceData);
+
         try {
-            await InvoicesAPI.create(invoiceData);
+            const response = await InvoicesAPI.create(invoiceData);
+            console.log('✅ Invoice created:', response);
             showToast('success', 'Created', 'Invoice created successfully');
             closeModal('invoiceModal');
-            form.reset();
-            loadInvoicesPage();
+            newForm.reset();
+            await loadInvoicesPage();
         } catch (error) {
+            console.error('❌ Invoice creation error:', error);
             showToast('error', 'Error', error.message || 'Failed to create invoice');
         } finally {
             showLoading(false);
         }
     });
 }
-
 
 // PDF Download functionality
 let invoicedownload = document.getElementById('invoicedownload');
