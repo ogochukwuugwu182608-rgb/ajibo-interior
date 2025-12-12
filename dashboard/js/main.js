@@ -6,6 +6,7 @@ import { loadProjectsPage } from './pages/projects.js';
 import { loadContactsPage } from './pages/contacts.js';
 import { loadNewsletterPage } from './pages/newsletter.js';
 import { loadProfilePage } from './pages/profile.js';
+import { loadPaymentsPage } from './pages/payments.js';
 
 // DOM Elements
 const loginPage = document.getElementById('loginPage');
@@ -104,7 +105,8 @@ const pages = {
     dashboard: loadDashboardPage,
     invoices: loadInvoicesPage,
     receipts: loadReceiptsPage,
-    projects: loadProjectsPage,
+    projects: loadProjectsPage,    
+    payments: loadPaymentsPage,  
     contacts: loadContactsPage,
     newsletter: loadNewsletterPage,
     services: () => pageContent.innerHTML = '<div class="card"><h2>Services Page Coming Soon</h2></div>',
@@ -130,7 +132,8 @@ export async function navigateTo(page) {
             dashboard: 'Dashboard',
             invoices: 'Invoices',
             receipts: 'Receipts',
-            projects: 'Projects',
+            projects: 'Projects',   
+            payments: 'Payments', 
             quotes: 'Quote Submissions',
             newsletter: 'Newsletter Subscribers',
             services: 'Services',
