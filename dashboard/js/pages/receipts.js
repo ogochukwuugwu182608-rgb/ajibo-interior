@@ -328,9 +328,9 @@ async function viewReceipt(id) {
 
         const modalBody = document.getElementById('viewReceiptBody');
    
-        const client_name =  receipt.client_name ? receipt.client_name : receipt.manual_client_name;
-        const client_email =  receipt.client_email ? receipt.client_email : receipt.manual_client_email;
-        const client_phone  =  receipt.client_phone ? receipt.client_phone : receipt.manual_client_phone;
+        const client_name =  receipt.customer_name ? receipt.customer_name : receipt.manual_client_name;
+        const client_email =  receipt.customer_email ? receipt.customer_email : receipt.manual_client_email;
+        const client_phone  =  receipt.customer_phone ? receipt.customer_phone : receipt.manual_client_phone;
         const invoice_number  =  receipt.invoice_number ? receipt.invoice_number: '';
         const quote_service = receipt.service_type || receipt.manual_service_name  || "N/A";
       
