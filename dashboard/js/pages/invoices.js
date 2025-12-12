@@ -237,6 +237,7 @@ async function createNewInvoice() {
         const quoteFields = document.getElementById('quoteFields');
         const manualFields = document.getElementById('manualFields');
         const quoteSelect = document.getElementById('quoteSelect');
+        console.log(document.getElementById('manualInvoiceBtn')
 
         // Toggle to Quote Invoice mode
         if (quoteBtn) {
