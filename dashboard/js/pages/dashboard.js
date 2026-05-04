@@ -49,7 +49,7 @@ export async function loadDashboardPage() {
             </div>
 
             <!-- Content Grid -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <div class="content-grid">
                 <!-- Recent Contacts -->
                 <div class="card">
                     <div class="card-header">
