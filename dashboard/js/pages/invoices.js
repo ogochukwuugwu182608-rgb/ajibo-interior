@@ -419,9 +419,9 @@ async function viewInvoice(id) {
                         <td><strong>Due Date:</strong> ${invoice.due_date ? formatDate(invoice.due_date) : 'N/A'}</td>
                     </tr>
                 </table>
-
-                <h4 class="table-title">Service Breakdown</h4>
-
+            
+            <h4 class="table-title">Service Breakdown</h4>
+            <div class="table-container">
                 <table class="line-table">
                     <thead>
                         <tr>
@@ -456,6 +456,7 @@ async function viewInvoice(id) {
                     </tr>
                 </table>
 
+</div>
                 <h4 class="table-title">Notes</h4>
                 <p class="notes-text">${invoice.notes || 'N/A'}</p>
             </div>
