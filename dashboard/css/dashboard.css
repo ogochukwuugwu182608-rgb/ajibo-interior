@@ -606,7 +606,7 @@ th {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    white-space: nowrap;
+    
 }
 
 td { padding: 1rem; border-bottom: 1px solid var(--border-color); color: var(--text-primary); }
