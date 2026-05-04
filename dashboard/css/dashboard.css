@@ -1252,6 +1252,46 @@ tr:hover { background: var(--bg-secondary); }
 
 
 
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Mobile: stack columns on small screens */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Make table text smaller on mobile */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.8rem;
+    }
+
+    table th,
+    table td {
+        padding: 0.5rem 0.4rem;
+        white-space: nowrap;
+    }
+}
+
+
+
+
+
+
 
 
 
