@@ -1281,12 +1281,15 @@ tr:hover { background: var(--bg-secondary); }
 }
 
 table {
-    min-width: 500px; /* Forces table to maintain full width, enabling scroll */
+    
+    min-width: 100%; /* Forces table to maintain full width, enabling scroll */
 }
 
 @media (max-width: 768px) {
     table {
         font-size: 0.8rem;
+        width:100%;
+        margin:0;
     }
 
     table th,
